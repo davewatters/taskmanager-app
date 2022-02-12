@@ -11,21 +11,25 @@
   </div>
 </div>
 
-<!-- <div class="row card-panel grey lighten-3">
+<!-- display the list of tasks -->
+<!-- <div class="row card-panel grey lighten-3"> -->
+<div class="row">
   <ul class="collapsible">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
-</div> -->
-
+      {% for task in tasks %}
+      <li>
+        <div class="collapsible-header white-text light-blue darken-4">
+          <i class="material-icons">arrow_drop_down</i>
+          <strong>{{ task.task_name }} :</strong> &nbsp;{{ task.due_date.strftime("%d %B, %Y") }}
+          {% if task.is_urgent == True %}
+            <i class="fas fa-exclamation-circle light-blue-text text-lighten-2"></i>
+          {% endif %}
+        </div>
+        <div class="collapsible-body">
+          <strong>{{ task.category }}</strong>
+          <p>{{ task.task_description }}</p>
+          </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
